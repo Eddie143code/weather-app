@@ -1,91 +1,232 @@
 main {
   display: flex;
-  flex-direction: row;
-  background-color: #bebcbc;
-  grid-template-columns: minmax(100vw, 1fr);
-  grid-template-rows: minmax(100vh, 1fr);
-  justify-items: center;
   align-items: center;
-  height: 925px;
+  justify-items: center;
+
+  background-color: #bebcbc;
+  height: 900px;
+  width: 2100px;
 }
 .container {
   display: flex;
-  flex-direction: column;
-  height: 500px;
-  width: 250px;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-items: center;
   margin: auto;
-  margin-top: 100px;
-  background: #e0ffff;
+  background: #ccf0f0;
   border: none;
   border-radius: 15px;
+  height: 525px;
+  width: 300px;
+}
+.arrow-div {
+  display: flex;
+  height: 40px;
+  width: 300px;
+}
+.date-container {
+  display: flex;
+  width: 300px;
+  height: 65px;
+  align-items: center;
+  justify-content: center;
+}
+.error-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+  width: 300px;
+}
+.searchbar-div {
+  display: Flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  height: 70px;
+  width: 300px;
+  z-index: auto;
 }
 
-.image-container {
+.image-container-1 {
   display: flex;
-  background-color: white;
+
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
   border-radius: 15px;
-  height: 200px;
+  height: 135px;
+  width: 300px;
+}
+
+.image-container-2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(239, 247, 250);
+  border-radius: 15px;
+  height: 155px;
+  width: 300px;
+}
+.image-container-1-div1 {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100px;
+  width: 115px;
+  border: transparent;
+  border-radius: 15px;
+  background-color: rgb(239, 247, 250);
+}
+
+.image-container-1-div2 {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100px;
+  width: 115px;
+  border: transparent;
+  border-radius: 15px;
+  background-color: rgb(239, 247, 250);
 }
 
 .img {
   position: relative;
-  top: 20px;
 }
-.date-div {
-  display: flex;
-  width: 250px;
-  height: 150px;
-  align-items: center;
 
-  margin: auto;
-}
-.date-container {
-  position: relative;
+.date-div {
+  display: Flex;
+
   font-size: 30px;
-  left: 70px;
 }
 
 .city-div {
-  position: relative;
-  font-size: 25px;
+  display: flex;
+  height: 20px;
+  font-size: 15px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  height: 50px;
-  top: 0px;
-  bottom: 0px;
-  background-color: white;
+
   border-radius: 15px;
 }
 
-.temperature-div {
+.temperature-block1 {
+  display: flex;
   position: relative;
-  left: 20px;
-  font-size: 25px;
-  top: 20px;
-  bottom: 0px;
+  left: 10px;
+  font-size: 20px;
+}
+
+.image-container-div1-details {
+  display: flex;
+}
+
+.image-container-div2-details {
+  display: flex;
+}
+
+.temperature-block2 {
+  display: flex;
+  position: relative;
+  left: 10px;
+  font-size: 20px;
+}
+
+.image-container-2-div1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  height: 50px;
+  width: 300px;
+}
+
+.image-container-2-div2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  height: 50px;
+  width: 300px;
+}
+
+.image-container-2-div1-details1 {
+  display: flex;
+  font-size: 20px;
+  height: 25px;
+  width: 250px;
+}
+
+.image-container-2-div1-details2 {
+  display: flex;
+  height: 25px;
+  width: 250px;
+}
+.precip {
+  position: relative;
+}
+.precipamountpos {
+  position: relative;
+}
+.windpos {
+  position: relative;
+  left: 60px;
+}
+
+.windamountpos {
+  position: relative;
+  left: 160px;
+}
+
+.image-container-2-div2-details1 {
+  display: flex;
+  font-size: 20px;
+  height: 25px;
+  width: 250px;
+}
+.image-container-2-div2-details2 {
+  display: flex;
+  height: 25px;
+  width: 250px;
+}
+
+.prespos {
+  position: relative;
+
+  left: 85px;
+}
+
+.humid {
+  font-size: 20px;
+}
+
+.humidamountpos {
+  position: relative;
+}
+.pressamountpos {
+  position: relative;
+  left: 150px;
 }
 
 .condition-div {
   position: relative;
-  top: 0px;
-  bottom: 0px;
 }
 
 .wind-div {
   position: relative;
-  font-size: 25px;
-  top: 70px;
-  right: 25px;
-  bottom: 0px;
 }
 
 .wind-icon {
-  font-size: 30px;
+  font-size: 40px;
 }
 
-.arrow-div {
+.arrow-box {
   display: flex;
-  width: 250px;
+  height: 25px;
+  width: 300px;
+  background-color: white;
   border: none;
   border-radius: 15px;
 }
@@ -101,18 +242,17 @@ main {
   font-size: 15px;
 }
 
-.error-div {
-  display: flex;
-  height: 25px;
+.input-field {
+  display: Flex;
+  height: 30px;
 }
 
-.inputfield {
-  position: relative;
-  left: 36px;
+.filt-data-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.filt-data {
-  position: relative;
-}
+
 .search input {
   border: 0;
   border-radius: 2px;
@@ -120,17 +260,8 @@ main {
   border-bottom-right-radius: 0px;
 }
 
-.searchbar-div {
-  display: Flex;
-  height: 140px;
-  z-index: auto;
-}
-
 .dataResult {
   position: relative;
-  top: 16px;
-  right: 140px;
-  margin-top: 5px;
   width: 180px;
   height: 80px;
   background-color: white;
@@ -143,28 +274,32 @@ main {
   display: flex;
   align-items: Center;
   justify-content: Center;
-  height: 350px;
+
+  height: 325px;
+  width: 300px;
 }
 
 .sc-div2 {
   display: flex;
-  flex-direction: column;
-
-  height: 125px;
-  width: 250px;
-  top: 60px;
+  align-items: Center;
+  justify-content: Center;
+  height: 100px;
+  width: 300px;
   align-items: center;
   margin: auto;
   background-color: white;
   border-radius: 15px;
+  border-collapse: collapse;
 }
 .sc-div3 {
   display: flex;
-  height: 125px;
-  justify-content: center;
-  align-items: center;
+  height: 100px;
+  width: 300px;
+  align-items: Center;
+  justify-content: Center;
   background-color: white;
   border-radius: 15px;
+  border-collapse: collapse;
 }
 
 .sc-text {
@@ -188,6 +323,17 @@ main {
 
 .sc-img {
   position: relative;
+}
+
+.suggestionsmatch {
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #bebcbc;
+}
+p:hover {
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #bebcbc;
 }
 
 /* CSS get start button */

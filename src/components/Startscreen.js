@@ -9,8 +9,8 @@ const Startscreen = ({ onClick }) => {
         <img
           src={startimage}
           className="sc-img"
-          width="180"
-          height="180"
+          width="220"
+          height="220"
           alt="img"
         />
       </div>
