@@ -14,15 +14,17 @@ const Startscreen = ({ onClick }) => {
           alt="img"
         />
       </div>
-      <div className="sc-div2">
-        <span className="sc-text">
-          Find out the weather in any capital city
-        </span>
-      </div>
-      <div className="sc-div3">
-        <button className="button-17" onClick={onClick}>
-          Get Start
-        </button>
+      <div className="wrap-div1-div2">
+        <div className="sc-div2">
+          <span className="sc-text">
+            Find out the weather in any capital city
+          </span>
+        </div>
+        <div className="sc-div3">
+          <button className="button-17" onClick={onClick}>
+            Get Start
+          </button>
+        </div>
       </div>
     </div>
   );

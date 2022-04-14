@@ -27,25 +27,21 @@ const Day = ({
   displayWeather,
   error,
   onClick,
+  onClickclear,
 
   displayBlock1,
   displayBlock2,
+
+  info1,
+  info2,
+  handleInfo1,
+  handleInfo2,
 }) => {
   // Determine today's date
-  const [info1, setInfo1] = useState(false);
-  const [info2, setInfo2] = useState(false);
+
   const date = new Date();
   const today =
     date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
-
-  const handleInfo1 = () => {
-    setInfo2(false);
-    setInfo1(true);
-  };
-  const handleInfo2 = () => {
-    setInfo1(false);
-    setInfo2(true);
-  };
 
   return (
     <div className="container">
@@ -61,9 +57,20 @@ const Day = ({
         <div className="error">
           {error && "Invalid input, please only search for capital cities"}
         </div>
+        <div className="noterror">
+          {!error && "Click the selected cities to see more information!"}
+        </div>
       </div>
       <div className="searchbar-div">
         <Searchbar data={capitalcities} onKeyPress={onKeyPress} />
+      </div>
+      <div className="clear-div">
+        <span className="button-span">
+          {" "}
+          <button className="button-1" onClick={onClickclear}>
+            Clear All
+          </button>
+        </span>
       </div>
       <div className="image-container-1">
         {displayWeather && !error && displayBlock1 && (
@@ -121,7 +128,8 @@ const Day = ({
               <>
                 <div className="image-container-2-div1">
                   <div className="image-container-2-div1-details1">
-                    Precipitation: <span className="windpos">Wind:</span>
+                    <span className="precip">Precipitation:</span>{" "}
+                    <span className="windpos">Wind:</span>
                   </div>
                   <div className="image-container-2-div1-details2">
                     <span className="precipamountpos">{precip2}</span>
@@ -130,7 +138,8 @@ const Day = ({
                 </div>
                 <div className="image-container-2-div2">
                   <div className="image-container-2-div2-details1">
-                    Humidity: <span className="prespos">Pressure:</span>
+                    <span className="humid">Humidity:</span>
+                    <span className="prespos">Pressure:</span>
                   </div>
                   <div className="image-container-2-div2-details2">
                     <span className="humidamountpos">{humid2}</span>

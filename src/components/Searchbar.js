@@ -16,9 +16,9 @@ function SearchBar({ data, onKeyPress }) {
 
   const handleFilter = (event) => {
     const temp = event.target.value;
-
+    const input = temp.charAt(0).toUpperCase() + temp.slice(1);
     const newFilter = data.filter((value) => {
-      return value.includes(temp);
+      return value.includes(input);
     });
     setInput(temp);
     setFilteredData(newFilter);
@@ -75,7 +75,7 @@ function SearchBar({ data, onKeyPress }) {
         <input
           type="text"
           className="input-field"
-          placeholder="Search..."
+          placeholder="Search for a city"
           onKeyPress={onKeyPress}
           onChange={handleFilter}
           onKeyDown={onKeyDown}

@@ -86,6 +86,7 @@ const capitalcities = [
   "Jakarta",
   "Jamestown",
   "Jerusalem",
+  "Johannesburg",
   "Juba",
   "Kabul",
   "Kampala",
