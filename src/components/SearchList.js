@@ -5,7 +5,7 @@ const SearchList = ({
   onClick,
 }) => {
   return suggestionList ? (
-    <div className="dataResult">
+    <div class="relative h-20 w-44 bg-white shadow-md overflow-hidden overflow-y-auto">
       {filteredData.map((value, index) => {
         let className;
         if (index === activeSuggestionIndex) {

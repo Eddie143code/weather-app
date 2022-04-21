@@ -4,38 +4,22 @@ import capitalcities from "./capitalcities";
 import { BiArrowBack } from "react-icons/bi";
 import { WiStrongWind } from "react-icons/wi";
 import "../index.css";
+import WeatherSummaryView from "./WeatherSummary/WeatherSummaryView";
+import WeatherExtraView from "./WeatherSummary/WeatherExtraView";
 
 const Day = ({
-  city1,
-  cond1,
-  temp1,
-  precip1,
-  wind1,
-  humid1,
-  press1,
-
-  image1,
-  city2,
-  cond2,
-  temp2,
-  precip2,
-  wind2,
-  humid2,
-  press2,
-  image2,
   onKeyPress,
   displayWeather,
   error,
   onClick,
   onClickclear,
 
-  displayBlock1,
-  displayBlock2,
+  displayBlock,
 
-  info1,
-  info2,
-  handleInfo1,
-  handleInfo2,
+  info,
+  handleInfo,
+
+  weatherData,
 }) => {
   // Determine today's date
 
@@ -44,114 +28,54 @@ const Day = ({
     date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
 
   return (
-    <div className="container">
-      <div className="arrow-div">
-        <button className="arrow-box" onClick={onClick}>
-          <BiArrowBack className="arrow" size="25px" />
+    <div
+      class="flex-wrap items-center justify-center 
+    m-auto bg-cyan-200 border-0 rounded-2xl h-131.25 w-75 shadow-slate-400 shadow-2l"
+    >
+      <div className="flex h-10 w-75">
+        <button
+          class="flex bg-white h-6 w-75 border-0 rounded-2xl"
+          onClick={onClick}
+        >
+          <BiArrowBack class="bg-transparent border-transparent" size="25px" />
         </button>
       </div>
-      <div className="date-container">
-        <div className="date-div">{today}</div>
+      <div class="flex h-12 w-75text-center justify-center">
+        <div class="flex text-3xl">{today}</div>
       </div>
-      <div className="error-div">
-        <div className="error">
+      <div class="flex text-center justify-center h-14 w-75">
+        <span class=" font-semibold font-sans">
           {error && "Invalid input, please only search for capital cities"}
-        </div>
-        <div className="noterror">
-          {!error && "Click the selected cities to see more information!"}
-        </div>
+        </span>
+        <span class="text-cyan-500 font-serif text-sm">
+          {!error &&
+            "Search any Capital City from around the world and press Clear All to remove them!"}
+        </span>
       </div>
-      <div className="searchbar-div">
+      <div class="flex flex-wrap justify-center  h-17.25 w-75">
         <Searchbar data={capitalcities} onKeyPress={onKeyPress} />
       </div>
-      <div className="clear-div">
-        <span className="button-span">
-          {" "}
+      <div class="flex justify-end">
+        <span class="flex">
           <button className="button-1" onClick={onClickclear}>
             Clear All
           </button>
         </span>
       </div>
-      <div className="image-container-1">
-        {displayWeather && !error && displayBlock1 && (
-          <>
-            <button className="image-container-1-div1" onClick={handleInfo1}>
-              <div className="city-div">{city1}</div>
-              <div className="image-container-div1-details">
-                <span>
-                  <img src={image1} alt="" height="40" width="40" />
-                </span>
-                <span className="temperature-block1">{temp1} °C</span>
-              </div>
-            </button>
-          </>
-        )}
-        {displayWeather && !error && displayBlock2 && (
-          <button className="image-container-1-div2" onClick={handleInfo2}>
-            <div className="city-div">{city2}</div>
-            <div className="image-container-div2-details">
-              <span>
-                <img src={image2} alt="" height="40" width="40" />
-              </span>
-              <span className="temperature-block2">{temp2} °C</span>
-            </div>
-          </button>
-        )}
-      </div>
-      <div className="image-container-2">
-        {displayWeather && !error && (
-          <>
-            {info1 ? (
-              <>
-                <div className="image-container-2-div1">
-                  <div className="image-container-2-div1-details1">
-                    <span className="precip">Precipitation:</span>{" "}
-                    <span className="windpos">Wind:</span>
-                  </div>
-                  <div className="image-container-2-div1-details2">
-                    <span className="precipamountpos">{precip1}</span>
-                    <span className="windamountpos">{wind1}</span>
-                  </div>
-                </div>
-                <div className="image-container-2-div2">
-                  <div className="image-container-2-div2-details1">
-                    <span className="humid">Humidity:</span>{" "}
-                    <span className="prespos">Pressure:</span>
-                  </div>
-                  <div className="image-container-2-div2-details2">
-                    <span className="humidamountpos">{humid1}</span>
-                    <span className="pressamountpos">{press1}</span>
-                  </div>
-                </div>
-              </>
-            ) : info2 ? (
-              <>
-                <div className="image-container-2-div1">
-                  <div className="image-container-2-div1-details1">
-                    <span className="precip">Precipitation:</span>{" "}
-                    <span className="windpos">Wind:</span>
-                  </div>
-                  <div className="image-container-2-div1-details2">
-                    <span className="precipamountpos">{precip2}</span>
-                    <span className="windamountpos">{wind2}</span>
-                  </div>
-                </div>
-                <div className="image-container-2-div2">
-                  <div className="image-container-2-div2-details1">
-                    <span className="humid">Humidity:</span>
-                    <span className="prespos">Pressure:</span>
-                  </div>
-                  <div className="image-container-2-div2-details2">
-                    <span className="humidamountpos">{humid2}</span>
-                    <span className="pressamountpos">{press2}</span>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <div></div>
-            )}
-          </>
-        )}
+      <div class="flex flex-wrap bg-slate-50 rounded-2xl h-72 w-75 justify-center justify-around">
+        {weatherData.map((data) => {
+          return (
+            <WeatherSummaryView
+              key={data}
+              {...data}
+              displayBlock={displayBlock}
+              error={error}
+              displayWeather={displayWeather}
+              info={info}
+              handleInfo={handleInfo}
+            />
+          );
+        })}
       </div>
     </div>
   );

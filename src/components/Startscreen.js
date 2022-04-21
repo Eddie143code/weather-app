@@ -4,8 +4,11 @@ import "../index.css";
 const Startscreen = ({ onClick }) => {
   const startimage = Startscreenimage;
   return (
-    <div className="container">
-      <div className="sc-div1">
+    <div
+      class="flex-wrap items-center justify-center 
+      m-auto bg-cyan-200 border-0 rounded-md h-131.25 w-75 shadow-slate-400 shadow-2l"
+    >
+      <div class="flex items-center justify-center m-auto h-81.25 w-75">
         <img
           src={startimage}
           className="sc-img"
@@ -14,13 +17,13 @@ const Startscreen = ({ onClick }) => {
           alt="img"
         />
       </div>
-      <div className="wrap-div1-div2">
-        <div className="sc-div2">
-          <span className="sc-text">
+      <div class="flex-wrap bg-white rounded-md">
+        <div class="flex items-center justify-center h-25 w-75">
+          <span class="flex w-50">
             Find out the weather in any capital city
           </span>
         </div>
-        <div className="sc-div3">
+        <div class="flex h-25 w-75 items-center justify-center">
           <button className="button-17" onClick={onClick}>
             Get Start
           </button>

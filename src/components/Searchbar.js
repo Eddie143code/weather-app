@@ -71,10 +71,10 @@ function SearchBar({ data, onKeyPress }) {
 
   return (
     <>
-      <div className="input-field-div">
+      <div>
         <input
           type="text"
-          className="input-field"
+          class="flex h-7"
           placeholder="Search for a city"
           onKeyPress={onKeyPress}
           onChange={handleFilter}
@@ -82,7 +82,7 @@ function SearchBar({ data, onKeyPress }) {
           value={input}
         />
       </div>
-      <div className="filt-data-div">
+      <div class="flex justify-center">
         <SearchList
           filteredData={filteredData}
           activeSuggestionIndex={activeSuggestionIndex}
