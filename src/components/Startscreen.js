@@ -5,25 +5,19 @@ const Startscreen = ({ onClick }) => {
   const startimage = Startscreenimage;
   return (
     <div
-      class="flex-wrap items-center justify-center 
-      m-auto bg-cyan-200 border-0 rounded-md h-131.25 w-75 shadow-slate-400 shadow-2l"
+      className="flex-wrap items-center justify-center 
+      m-auto bg-violet-200 border-0 rounded-2xl h-135 w-75 "
     >
-      <div class="flex items-center justify-center m-auto h-81.25 w-75">
-        <img
-          src={startimage}
-          className="sc-img"
-          width="220"
-          height="220"
-          alt="img"
-        />
+      <div className="flex items-center justify-center m-auto p-10">
+        <img src={startimage} width="220" height="220" alt="img" />
       </div>
-      <div class="flex-wrap bg-white rounded-md">
-        <div class="flex items-center justify-center h-25 w-75">
-          <span class="flex w-50">
+      <div className="flex-wrap bg-white rounded-lg mt-8 mx-3">
+        <div className="flex items-center justify-center p-6">
+          <span className="flex m-auto px-4">
             Find out the weather in any capital city
           </span>
         </div>
-        <div class="flex h-25 w-75 items-center justify-center">
+        <div className="flex m-auto p-6 items-center justify-center">
           <button className="button-17" onClick={onClick}>
             Get Start
           </button>

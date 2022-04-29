@@ -28,18 +28,21 @@ function App() {
 
   /* const [condition, setCondition] = useState("") */
 
+  const [preview, setPreview] = useState("");
+
   const [weatherData, setWeatherData] = useState([]);
 
   const [info, setInfo] = useState(false);
+
+  const [refresh, setRefresh] = useState([]);
 
   // function that fetches information from api and stores it as an object in the weatherData array
 
   const fetchCity = () => {
     console.log("in fetch");
-
     if (city) {
       const url = `http://api.weatherapi.com/v1/current.json?key=49b3729be16b44f89da73548221803&q=${city}&aqi=no`;
-
+      console.log("in fetch if statement");
       if (capitalcities.includes(city)) {
         fetch(url)
           .then((response) => {
@@ -56,43 +59,6 @@ function App() {
               press: data.current.pressure_in,
             };
 
-            /* const weatherinfo = [
-              "Sunny",
-              "Clear",
-              "Cloudy",
-              "Partly",
-              "Overcast",
-              "Rain",
-              "rain",
-              "Snow",
-              "snow",
-            ];
-
-             for (let i = 0; i < weatherinfo.length; i++) {
-              if (
-                data.current.condition.text.includes(weatherinfo[0]) ||
-                data.current.condition.text.includes(weatherinfo[1])
-              ) {
-                information = { ...information, image: Sunny };
-              } else if (
-                data.current.condition.text.includes(weatherinfo[2]) ||
-                data.current.condition.text.includes(weatherinfo[3]) ||
-                data.current.condition.text.includes(weatherinfo[4])
-              ) {
-                information = { ...information, image: Cloudy };
-              } else if (
-                data.current.condition.text.includes(weatherinfo[5]) ||
-                data.current.condition.text.includes(weatherinfo[6])
-              ) {
-                information = { ...information, image: Rain };
-              } else if (
-                data.current.condition.text.includes(weatherinfo[7]) ||
-                data.current.condition.text.includes(weatherinfo[8])
-              ) {
-                information = { ...information, image: Snow };
-              }
-            }
-            */
             if (
               data.current.condition.text.includes("Sunny") ||
               data.current.condition.text.includes("Clear")
@@ -120,7 +86,9 @@ function App() {
             if (weatherData.length > 3) {
             } else {
               setDisplayBlock(true);
-              setWeatherData([...weatherData, information]);
+              setPreview(information);
+
+              // setWeatherData([...weatherData, information]);
             }
           });
       }
@@ -151,14 +119,37 @@ function App() {
     setCity("");
 
     setDisplayBlock(false);
+    setDisplayWeather(false);
 
-    setInfo("");
+    setInfo(false);
 
     setWeatherData([]);
   };
 
   const handleInfo = () => {
     setInfo(!info);
+  };
+
+  const handleAdd = () => {
+    if (weatherData.length < 4) {
+      setRefresh([...refresh, preview.city]);
+      setWeatherData([...weatherData, preview]);
+      setCity("");
+      setPreview("");
+    }
+  };
+
+  const HandleRefresh = () => {
+    refresh.forEach((r, i) => {
+      let value = refresh[i];
+      setCity(value);
+    });
+  };
+
+  const handleX = (event) => {
+    setWeatherData(() => {
+      return weatherData.filter(event.value);
+    });
   };
 
   // Used to fetch api data and save variables in session
@@ -172,7 +163,7 @@ function App() {
   }, [city]);
 
   return (
-    <main class="flex items-center justify-center bg-[url('./Background.jpg')] bg-no-repeat bg-auto h-240 w-477.5">
+    <main className="flex items-center justify-center bg-violet-400 bg-no-repeat bg-auto h-240 lg:w-477.5 md:w-238.75 ">
       {getStart ? (
         <Startscreen onClick={handleClick} />
       ) : (
@@ -187,6 +178,10 @@ function App() {
           info={info}
           handleInfo={handleInfo}
           weatherData={weatherData}
+          onClickadd={handleAdd}
+          preview={preview}
+          onClickRefresh={HandleRefresh}
+          onClickX={handleX}
         />
       )}
     </main>
