@@ -12,29 +12,30 @@ const WeatherSummaryView = ({
   info,
   displayBlock,
   handleInfo,
+
 }) => {
   return (
     <>
       {displayWeather && !error && displayBlock && (
         <>
           <div
-            class="flex-wrap h-28 w-30 border-solid border-2 border-slate-150 rounded-md bg-slate-100 shadow-2xl"
+            className="flex-wrap border-solid h-25 w-28 border-2 border-slate-150 rounded-md bg-slate-100 shadow-2xl"
             onClick={handleInfo}
           >
-            <div class="flex text-lg h-6 w-15">{city}</div>
-            <div class="flex">
+            <div className="flex text-sm">{city}</div>
+            <div className="flex">
               <span>
-                <img src={image} alt="" height="40" width="40" />
+                <img src={image} alt="" height="30" width="30" />
               </span>
-              <span class="flex relative left-2">{temp} °C</span>
+              <span className="flex text-sm relative left-2">{temp} °C</span>
             </div>
-            <div class="flex">
-              <span class="text-sm">Precipitation:</span>
-              <span class="relative left-2">{precip}</span>
+            <div className="flex">
+              <span className="text-sm">Precipitation:</span>
+              <span className="text-sm relative left-2">{precip}</span>
             </div>
-            <div class="flex">
-              <span class="text-sm">Wind:</span>
-              <span class="relative left-2">{wind}</span>
+            <div className="flex">
+              <span className="text-sm">Wind:</span>
+              <span className="text-sm relative left-2">{wind}</span>
             </div>
           </div>
         </>
