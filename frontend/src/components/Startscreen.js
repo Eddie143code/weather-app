@@ -1,8 +1,19 @@
 import Startscreenimage from "../Startscreenimage.svg";
 import "../index.css";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-const Startscreen = ({ onClick }) => {
+const Startscreen = ({ onClick, user }) => {
   const startimage = Startscreenimage;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/Login");
+    }
+  });
+
   return (
     <div
       className="flex-wrap items-center justify-center 

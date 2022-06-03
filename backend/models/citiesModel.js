@@ -1,24 +1,19 @@
 const mongoose = require("mongoose");
 
 const citiesSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  name: {
+  city: {
     type: String,
     required: true,
     trim: true,
     maxlength: [20],
   },
-  temperature: {
+  temp: {
     type: String,
     required: true,
     trim: true,
     maxlength: [20],
   },
-  precipitation: {
+  precip: {
     type: String,
     required: true,
     maxlength: [20],
@@ -28,9 +23,24 @@ const citiesSchema = new mongoose.Schema({
     required: true,
     maxlength: [20],
   },
-  completed: {
-    type: Boolean,
-    default: false,
+  humid: {
+    type: String,
+    required: true,
+    maxlength: [20],
+  },
+  press: {
+    type: String,
+    required: true,
+    maxlength: [20],
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  user: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+    required: true,
   },
 });
 

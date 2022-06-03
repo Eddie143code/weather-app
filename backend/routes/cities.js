@@ -6,7 +6,6 @@ const {
   deleteAllCities,
 } = require("../controllers/citiesController");
 
-router.route("/").get(getAllCities).delete(deleteAllCities);
-router.route("/:id").post(createCities);
+router.route("/").get(getAllCities).delete(deleteAllCities).post(createCities);
 
 module.exports = router;

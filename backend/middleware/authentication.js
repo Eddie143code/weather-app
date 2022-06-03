@@ -3,19 +3,19 @@ const jwt = require("jsonwebtoken");
 
 const auth = async (req, res, next) => {
   // check header
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith("Bearer")) {
-    throw new Error("Authentication invalid");
-  }
-  const token = authHeader.split(" ")[1];
+  let token;
+
+  token = req.headers.authorization.split(" ")[1];
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(payload);
     // attach the user to the job routes
-    req.user = { userId: payload.userId, name: payload.name };
+    req.user = { userId: payload.id };
+    console.log(req.user);
     next();
   } catch (error) {
-    throw new Error("Authentication invalid");
+    throw new Error("Authentication wrong");
   }
 };
 
