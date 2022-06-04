@@ -15,7 +15,7 @@ const register = async (req, res) => {
   // Check if all fields had input and if not throw error
   if (!name || !email || !password) {
     res.status(400);
-    throw new Error("Please add all fields");
+    res.json();
   }
 
   // Find if email already exists in database
@@ -24,7 +24,7 @@ const register = async (req, res) => {
   // If user exists throw error
   if (userExists) {
     res.status(400);
-    throw new Error("User already exists");
+    res.json();
   }
 
   // Hash password
@@ -47,7 +47,8 @@ const register = async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid user data");
+    res.status(400);
+    res.json();
   }
 };
 
@@ -55,13 +56,15 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    throw new Error("Please provide email and password");
+    res.status(400);
+    res.json();
   }
 
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new Error("Invalid Credentials");
+    res.status(400);
+    res.json();
   }
 
   if (user && (await bcrypt.compare(password, user.password))) {
@@ -73,7 +76,7 @@ const login = async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid credentials");
+    res.json();
   }
 };
 

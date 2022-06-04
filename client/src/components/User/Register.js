@@ -9,6 +9,8 @@ const Registration = ({ user, setUser }) => {
 
   const { name, email, password } = form;
 
+  const [invalid, setInvalid] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,11 +28,13 @@ const Registration = ({ user, setUser }) => {
       if (response.data) {
         navigate("/");
         localStorage.setItem("account", JSON.stringify(response.data));
+        setInvalid("");
       }
 
       return response.data;
     } catch (error) {
       setUser("");
+      setInvalid(true);
       return error;
     }
   };
@@ -42,10 +46,11 @@ const Registration = ({ user, setUser }) => {
     }));
   };
   return (
-    <section>
-      <header>register</header>
+    <section className="flex flex-wrap justify-center m-0 h-96 w-60 bg-slate-200">
+      <header className="flex justify-center text-4xl w-60">Register</header>
       <form onSubmit={handleSubmit}>
         <input
+          className="flex"
           type="text"
           placeholder="name"
           name="name"
@@ -53,6 +58,7 @@ const Registration = ({ user, setUser }) => {
           onChange={onChange}
         />
         <input
+          className="flex"
           type="text"
           placeholder="email"
           name="email"
@@ -60,17 +66,31 @@ const Registration = ({ user, setUser }) => {
           onChange={onChange}
         />
         <input
+          className="flex"
           type="text"
           placeholder="password"
           name="password"
           value={password}
           onChange={onChange}
         />
-        <button type="submit">submit</button>
+        <button
+          className="flex justify-center bg-sky-500 button-3"
+          type="submit"
+        >
+          submit
+        </button>
       </form>
-      <div>
-        {" "}
-        <Link to="/Register">Login</Link>
+      <div className="flex m-0 h-8 w-60 justify-center">
+        {invalid && (
+          <span className="flex font-bold text-red-600">
+            Invalid credentials
+          </span>
+        )}
+      </div>
+      <div className="flex m-0 h-8 justify-center">
+        <Link className="button-33" to="/Register">
+          Login
+        </Link>
       </div>
     </section>
   );
