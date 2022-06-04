@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-const path = require("path");
 const express = require("express");
 const app = express();
 const connectDB = require("./db/connect");
@@ -16,23 +15,16 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
-
 // routes
 
 app.use("/api/auth", authRouter);
 app.use("/api/cities", authenticateUser, citiesRouter);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "client", "build")));
 
-  app.get("*", (req, res) =>
-    res.sendFile(
-      path.resolve(__dirname, "../", "frontend", "build", "index.html")
-    )
-  );
-} else {
-  app.get("/", (req, res) => res.send("Please set to production"));
-}
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 const start = async () => {
   try {
