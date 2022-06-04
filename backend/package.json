@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "heroku-postbuild": "cd frontend && npm install --only=dev && npm install && npm run build",
+    "start": "nodemon server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
   },
   "keywords": [],
   "author": "",
