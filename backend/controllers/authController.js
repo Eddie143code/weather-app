@@ -55,13 +55,15 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    throw new Error("Please provide email and password");
+    res.status(400);
+    res.json();
   }
 
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new Error("Invalid Credentials");
+    res.status(400);
+    res.json();
   }
 
   if (user && (await bcrypt.compare(password, user.password))) {
@@ -73,7 +75,7 @@ const login = async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error("Invalid credentials");
+    res.json();
   }
 };
 

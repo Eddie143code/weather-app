@@ -9,6 +9,8 @@ const Login = ({ user, setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [invalid, setInvalid] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,11 +28,11 @@ const Login = ({ user, setUser }) => {
         navigate("/");
         localStorage.setItem("account", JSON.stringify(response.data));
       }
-
+      setInvalid("");
       return response.data;
     } catch (error) {
       setUser("");
-
+      setInvalid(true);
       return error;
     }
   };
@@ -59,7 +61,13 @@ const Login = ({ user, setUser }) => {
           submit
         </button>
       </form>
-
+      <div className="flex m-0 h-8 w-60 justify-center">
+        {invalid && (
+          <span className="flex font-bold text-red-600">
+            Invalid credentials
+          </span>
+        )}
+      </div>
       <div className="flex m-0 h-8 justify-center">
         <Link className="button-33" to="/Register">
           Register
