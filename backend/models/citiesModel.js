@@ -33,6 +33,10 @@ const citiesSchema = new mongoose.Schema({
     required: true,
     maxlength: [20],
   },
+  image: {
+    type: String,
+    required: true,
+  },
   user: {
     type: mongoose.Types.ObjectId,
     ref: "User",
